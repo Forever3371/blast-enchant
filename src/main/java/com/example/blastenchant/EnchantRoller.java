@@ -127,6 +127,11 @@ public final class EnchantRoller {
         return world.getRegistryManager().get(RegistryKeys.ENCHANTMENT);
     }
 
+    /** 该物品当前能抽到的附魔数量（受配置里的黑名单、诅咒开关影响）。自检命令用它判断随机性断言是否适用。 */
+    public static int availableEnchantmentCount(ServerWorld world, ItemStack stack) {
+        return collectPool(world, stack).size();
+    }
+
     /** 清空"可用附魔"缓存（数据包 /reload 之后附魔集合可能变化）。 */
     public static void clearCache() {
         ENCHANTABLE_CACHE.clear();

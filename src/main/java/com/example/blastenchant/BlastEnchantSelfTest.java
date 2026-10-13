@@ -75,7 +75,11 @@ public final class BlastEnchantSelfTest {
         final boolean allPass = passed == results.size();
 
         source.sendFeedback(() -> Text.literal("===== Blast Enchant 自检 =====").formatted(Formatting.AQUA), false);
+        BlastEnchant.LOGGER.info("===== Blast Enchant 自检 =====");
         for (Result result : results) {
+            // 同时写日志：从函数或控制台执行时聊天反馈会被吞掉，日志才是可靠出口
+            BlastEnchant.LOGGER.info("[自检] {} {}：{}",
+                    result.pass() ? "通过" : "失败", result.name(), result.detail());
             source.sendFeedback(() -> Text.literal((result.pass() ? "  [通过] " : "  [失败] ")
                             + result.name() + "：" + result.detail())
                     .formatted(result.pass() ? Formatting.GREEN : Formatting.RED), false);
@@ -83,6 +87,7 @@ public final class BlastEnchantSelfTest {
         source.sendFeedback(() -> Text.literal("结果：" + passedCount + "/" + results.size()
                         + (allPass ? "  全部通过" : "  存在失败项"))
                 .formatted(allPass ? Formatting.GREEN : Formatting.RED), false);
+        BlastEnchant.LOGGER.info("[自检] 结果：{}/{}", passedCount, results.size());
 
         return allPass ? results.size() : 0;
     }
@@ -173,10 +178,22 @@ public final class BlastEnchantSelfTest {
             return new Result(name, false, "抛出异常：" + e);
         }
 
-        if (seen.size() < 2) {
-            return new Result(name, false, "40 次抽样只出现 " + seen.size() + " 种附魔：" + seen);
+        // 随机性断言要看池子大小：如果配置里的黑名单把可用附魔压到只剩 1 种，抽不出多样性是正常的
+        int poolSize;
+        try {
+            poolSize = EnchantRoller.availableEnchantmentCount(world, sample);
+        } catch (Exception e) {
+            return new Result(name, false, "统计可用附魔池时异常：" + e);
         }
-        return new Result(name, true, "40 次抽样拿到 " + seen.size() + " 种可用附魔：" + seen);
+
+        if (poolSize <= 1) {
+            return new Result(name, true, "可用附魔只有 " + poolSize + " 种（受配置限制），抽样结果：" + seen);
+        }
+        if (seen.size() < 2) {
+            return new Result(name, false, "可用附魔有 " + poolSize + " 种，但 40 次抽样只出现 "
+                    + seen.size() + " 种：" + seen);
+        }
+        return new Result(name, true, "可用 " + poolSize + " 种，40 次抽样拿到 " + seen.size() + " 种：" + seen);
     }
 
     /** 3. 配方是否都加载了（数据包被覆盖、写错路径都会在这里暴露）。 */
