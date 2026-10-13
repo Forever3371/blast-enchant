@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "group": "blast_enchant",
+  "ingredient": {
+    "item": "minecraft:warped_fungus_on_a_stick"
+  },
+  "result": {
+    "id": "minecraft:warped_fungus_on_a_stick",
+    "count": 1
+  },
+  "experience": 0.1,
+  "cookingtime": 100
+}

@@ -1,0 +1,15 @@
+# 统一换行符，避免 Windows / Linux 之间来回改行尾
+* text=auto eol=lf
+
+# 二进制文件不要当文本处理
+*.jar binary
+*.png binary
+*.nbt binary
+*.zip binary
+
+# Windows 批处理必须用 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Gradle wrapper 的 shell 脚本保持 LF
+gradlew text eol=lf

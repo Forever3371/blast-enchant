@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "blast-enchant-test",
+  "version": "1.0.0",
+  "name": "Blast Enchant Game Tests",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-gametest": [
+      "com.example.blastenchant.test.BlastEnchantGameTest"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "fabric-api": "*",
+    "blast_enchant": "*"
+  }
+}

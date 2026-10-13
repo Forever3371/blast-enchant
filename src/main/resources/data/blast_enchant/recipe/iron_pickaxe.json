@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "group": "blast_enchant",
+  "ingredient": {
+    "item": "minecraft:iron_pickaxe"
+  },
+  "result": {
+    "id": "minecraft:iron_pickaxe",
+    "count": 1
+  },
+  "experience": 0.1,
+  "cookingtime": 100
+}

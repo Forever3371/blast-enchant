@@ -1,0 +1,26 @@
+# Gradle 构建产物
+.gradle/
+build/
+out/
+classes/
+
+# 开发环境运行目录（测试世界、日志、崩溃报告）
+run/
+run-*/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+bin/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 注意：gradle/wrapper/gradle-wrapper.jar 是必须提交的，不要忽略

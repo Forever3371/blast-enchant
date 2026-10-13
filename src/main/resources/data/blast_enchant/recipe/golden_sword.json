@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "group": "blast_enchant",
+  "ingredient": {
+    "item": "minecraft:golden_sword"
+  },
+  "result": {
+    "id": "minecraft:golden_sword",
+    "count": 1
+  },
+  "experience": 0.1,
+  "cookingtime": 100
+}

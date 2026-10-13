@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "group": "blast_enchant",
+  "ingredient": {
+    "item": "minecraft:turtle_helmet"
+  },
+  "result": {
+    "id": "minecraft:turtle_helmet",
+    "count": 1
+  },
+  "experience": 0.1,
+  "cookingtime": 100
+}

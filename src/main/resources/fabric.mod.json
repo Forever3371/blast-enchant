@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "blast_enchant",
+  "version": "${version}",
+  "name": "Blast Enchant",
+  "description": "把工具/武器/盔甲放进高炉烧炼，产出带有随机 1000 级附魔的同一件装备。",
+  "authors": [
+    "forever3371"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.example.blastenchant.BlastEnchant"
+    ]
+  },
+  "mixins": [
+    "blast_enchant.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
